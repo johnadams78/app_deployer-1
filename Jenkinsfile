@@ -4,7 +4,7 @@ podTemplate(yaml: '''
     spec:
       containers:
       - name: tools
-        image: docker.projectxconsulting.net/tools:latest
+        image: docker.kayahuseyin.net/tools:latest
         command:
         - sleep
         args:
@@ -17,7 +17,7 @@ podTemplate(yaml: '''
     stage('Clone') {
       ws() {
           container('tools') {
-          checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'gh', url: 'https://github.com/farrukh90/custom_helm.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'gh', url: 'https://github.com/kayahuseyin64/app_deployer.git']]])
             }
         }
     }
@@ -25,7 +25,7 @@ podTemplate(yaml: '''
     stage('Terraform') {
       ws() {
           container('tools') {
-            withCredentials([file(credentialsId: 'k8s', variable: 'GC_KEY')]) {
+            withCredentials([file(credentialsId: 'kubernetes', variable: 'GC_KEY')]) {
                 sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
                 sh("gcloud container clusters get-credentials project-cluster --region us-central1")
 
