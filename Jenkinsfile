@@ -22,14 +22,11 @@ podTemplate(yaml: '''
         }
     }
 
-    stage('Terraform') {
+    stage('Authentication') {
       ws() {
           container('tools') {
-            withCredentials([file(credentialsId: 'kubernetes', variable: 'GC_KEY')]) {
-                sh("gcloud auth activate-service-account --key-file=${GC_KEY}")
+                sh("gcloud auth activate-service-account --key-file=service-account.json")
                 sh("gcloud container clusters get-credentials project-cluster --region us-central1")
-
-                }
             }
         }
     }
