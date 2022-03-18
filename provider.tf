@@ -1,3 +1,8 @@
-provider "kubernetes" {
-  config_path = "~/.kube/config"
+provider "google" {
+  credentials = "service-account.json"
+}
+provider "helm" {
+  kubernetes {
+    config_path = "~/.kube/config"
+  }
 }
