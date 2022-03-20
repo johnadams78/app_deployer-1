@@ -33,7 +33,7 @@ podTemplate(yaml: '''
     stage('Init') {
       ws() {
           container('tools') {
-          sh 'bash setenv.sh'
+          sh 'bash qasetenv.sh'
           sh 'terraform init'
             }
         }
