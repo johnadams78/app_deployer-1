@@ -33,7 +33,7 @@ node(POD_LABEL) {
     stage('Init') {
       ws() {
           container('tools') {
-          sh 'bash setenv.sh'
+          sh 'bash setenv.sh envs/${EnvironmentToBuild}.tfvars'
           sh 'terraform init'
             }
         }
@@ -42,7 +42,7 @@ node(POD_LABEL) {
       ws() {
           container('tools') {
             // sh 'sleep 120'
-            sh 'terraform apply -var-file envs/dev.tfvars -auto-approve'
+            sh 'terraform apply -var-file envs/${EnvironmentToBuild}.tfvars -auto-approve'
             }
         }
     }
