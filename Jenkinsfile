@@ -4,7 +4,7 @@ podTemplate(yaml: '''
     spec:
       containers:
       - name: tools
-        image: docker.kayahuseyin.net/tools:latest
+        image: docker.johnadamsev.com/tools:latest
         command:
         - sleep
         args:
