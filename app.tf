@@ -1,8 +1,8 @@
-module "artemis-terraform-helm" {
+module "app-terraform-helm" {
   source               = "./modules/terraform-helm/"
-  deployment_name      = "artemis"
+  deployment_name      = "app"
   deployment_namespace = var.namespace
-  deployment_path      = "charts/artemis/"
+  deployment_path      = "charts/app/"
   values_yaml          = <<EOF
 
 image:
@@ -25,13 +25,13 @@ ingress:
     acme.cert-manager.io/http01-edit-in-place: "true"
     kubernetes.io/ingress.class: nginx
   hosts:
-  - host: "artemis-${var.namespace}.${var.google_domain_name}"
+  - host: "app-${var.namespace}.${var.google_domain_name}"
     paths: 
     - path: /
   tls: 
-  - secretName: artemis
+  - secretName: app
     hosts:
-    - "artemis.${var.google_domain_name}"
+    - "app.${var.google_domain_name}"
   ingressClassName: nginx
   EOF
 }

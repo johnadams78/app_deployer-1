@@ -1,4 +1,4 @@
-google_domain_name = "kayahuseyin.net"
-image = "docker.kayahuseyin.net/artemis"
-tag  = "3.0.0"
+google_domain_name = "johnadamsev.com"
+image = "docker.johnadamsev.com/app"
+tag  = "1.0.0"
 namespace = "dev"

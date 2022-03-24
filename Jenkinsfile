@@ -18,7 +18,7 @@ node(POD_LABEL) {
     stage('Clone') {
       ws() {
           container('tools') {
-          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/kayahuseyin64/app_deployer.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/johnadams78/app_deployer-1.git']]])
             }
         }
     }
